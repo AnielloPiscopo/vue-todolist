@@ -38,11 +38,16 @@
         <div id="app">
             <main>
                 <h1>Vue To Do List</h1>
+
+                <form>
+                    <input type="text" name="toDoInput" id="toDoInput" v-model="newToDoAction">
+                    <button type="submit" @click.prevent="addElementToTheList(toDoActions,newToDoAction)">Clicca per inserire nella lista!</button>
+                </form>
                 
                 <ul v-if="toDoActions.length > 0">
                     <li v-for="(toDoAction,index) in toDoActions">
                         <span :class="(toDoAction.done) ? 'line-through' : ''">{{toDoAction.text}}</span>
-                        <i class="my-icon" @click="removeElementOfList(toDoAction)">X</i>
+                        <i class="my-icon" @click="removeElementOfTheList(toDoActions,index)">X</i>
                     </li>
                 </ul>
 

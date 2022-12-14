@@ -58,14 +58,25 @@ createApp({
                     done: false,
                 },
             ],
+
+            newToDoAction : '',
         }
     },
 
 
 
     methods: {
-        removeElementOfList(element){
-            this.toDoActions.splice(element,1);
+        removeElementOfTheList(list,index){
+            list.splice(index,1);
+        },
+
+        addElementToTheList(list,newElementText){
+            const newElement = {
+                text: newElementText,
+                done: false,
+            }
+
+            list.push(newElement);
         }
     },
 }).mount('#app')
