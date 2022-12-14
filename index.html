@@ -40,9 +40,9 @@
                 <h1>Vue To Do List</h1>
                 
                 <ul>
-                    <li>
-                        <span></span>
-                        <i>X</i>
+                    <li v-for="(element,index) in toDoActions">
+                        <span :class="(element.done) ? 'line-through' : ''">{{element.text}}</span>
+                        <i></i>
                     </li>
                 </ul>
             </main>

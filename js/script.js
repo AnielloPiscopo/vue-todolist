@@ -57,7 +57,9 @@ createApp({
                     text:'Fare la ricarica telefonica',
                     done: false,
                 },
-            ]
+            ],
+
+            activeIndex : 0
         }
     },
 
