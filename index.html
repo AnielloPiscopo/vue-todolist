@@ -39,12 +39,14 @@
             <main>
                 <h1>Vue To Do List</h1>
                 
-                <ul>
-                    <li v-for="(element,index) in toDoActions">
-                        <span :class="(element.done) ? 'line-through' : ''">{{element.text}}</span>
-                        <i></i>
+                <ul v-if="toDoActions.length > 0">
+                    <li v-for="(toDoAction,index) in toDoActions">
+                        <span :class="(toDoAction.done) ? 'line-through' : ''">{{toDoAction.text}}</span>
+                        <i class="my-icon" @click="removeElementOfList(toDoAction)">X</i>
                     </li>
                 </ul>
+
+                <p v-else>Non ci sono cose da fare per oggi</p>
             </main>
         </div>
     </body>

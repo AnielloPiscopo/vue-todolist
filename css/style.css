@@ -1,12 +1,18 @@
 /* *-------------------------------------------------------------------
 STILE GENERICO */
 
+/* * CLASSI */
+.my-icon{
+    cursor: pointer;
+}
+
+.line-through{
+    text-decoration: line-through;
+}
+
 
 
 
 
 /* *-------------------------------------------------------------------
 STILE SPECIFICO */
-main .line-through{
-    text-decoration: line-through;
-}

@@ -58,14 +58,14 @@ createApp({
                     done: false,
                 },
             ],
-
-            activeIndex : 0
         }
     },
 
 
 
     methods: {
-        
+        removeElementOfList(element){
+            this.toDoActions.splice(element,1);
+        }
     },
 }).mount('#app')
