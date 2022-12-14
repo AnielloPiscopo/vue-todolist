@@ -77,6 +77,10 @@ createApp({
             }
 
             list.push(newElement);
-        }
+        },
+
+        changeBooleanValue(booleanValue){
+            booleanValue = (booleanValue) ? false : true;
+        },
     },
 }).mount('#app')
