@@ -73,12 +73,16 @@ createApp({
         },
 
         addElementToTheList(list,newElementText){
-            const newElement = {
-                text: newElementText,
-                done: false,
-            }
+            newElementText = newElementText.toLowerCase();
 
-            list.push(newElement);
+            if(newElementText !='' && newElementText.length>=2){
+                const newElement = {
+                    text: newElementText,
+                    done: false,
+                }
+    
+                list.push(newElement);
+            }
         },
 
         changeBooleanValue(index){
