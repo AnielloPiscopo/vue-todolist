@@ -6,7 +6,7 @@ STILE GENERICO */
     cursor: pointer;
 }
 
-.line-through{
+.my-line-through{
     text-decoration: line-through;
 }
 

@@ -46,7 +46,7 @@
                 
                 <ul v-if="toDoActions.length > 0">
                     <li v-for="(toDoAction,index) in toDoActions">
-                        <span :class="(toDoAction.done) ? 'line-through' : ''" @click="changeBooleanValue(index)">{{toDoAction.text.charAt(0).toUpperCase() + toDoAction.text.substr(1)}}</span>
+                        <span :class="(toDoAction.done) ? 'my-line-through' : ''" @click="changeBooleanValue(index)">{{toDoAction.text.charAt(0).toUpperCase() + toDoAction.text.substr(1)}}</span>
                         <i class="my-icon" @click="removeElementOfTheList(toDoActions,index)">X</i>
                     </li>
                 </ul>
