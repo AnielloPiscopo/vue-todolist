@@ -60,6 +60,8 @@ createApp({
             ],
 
             newToDoAction : '',
+
+            isTheClassPresent : false, 
         }
     },
 
@@ -79,8 +81,12 @@ createApp({
             list.push(newElement);
         },
 
-        changeBooleanValue(booleanValue){
-            booleanValue = (booleanValue) ? false : true;
+        changeBooleanValue(index){
+            this.toDoActions[index].done = !this.toDoActions[index].done;
         },
+
+        toggleClass(element,elementClass){
+            console.log(element)
+        }
     },
 }).mount('#app')
