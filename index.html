@@ -12,7 +12,12 @@
         <!-- * LINK CSS -->
         
         <!-- ? LINK ESTERNI -->
+
+        <!-- * Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+        <!--* Font Awersome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
         <!-- ? LINK INTERNI -->
@@ -36,21 +41,34 @@
 
     <body>
         <div id="app">
-            <main>
-                <h1>Vue To Do List</h1>
+            <!-- * MAIN -->
+            <main class="container-fluid">
+                <!-- ? TITLE -->
+                <h1 class="pt-4 fw-bold">Vue To Do List</h1>
 
-                <form>
-                    <input type="text" name="toDoInput" id="toDoInput" v-model.trim.lazy="newToDoAction" class="my-input">
-                    <button type="submit" @click.prevent="addElementToTheList(toDoActions,newToDoAction)">Clicca per inserire nella lista!</button>
+
+                <!-- ? FORM -->
+                <form class="py-2">
+                    <input type="text" name="toDoInput" id="toDoInput" v-model.trim="newToDoAction" class="my-input form-control d-inline-block mb-3 mb-sm-0 me-sm-3 px-2" :class="(inputErrorValue) ? 'error' : 'correct'" placeholder="Inserisci la nuova attività da svolgere" @keyup.enter='addElementToTheList(toDoActions,newToDoAction)' @keyup="changeClass(newToDoAction)">
+
+                    <button type="submit" @click.prevent="addElementToTheList(toDoActions,newToDoAction)" class="my-btn btn-primary btn">Clicca qui!</button>
                 </form>
                 
-                <ul v-if="toDoActions.length > 0">
-                    <li v-for="(toDoAction,index) in toDoActions">
-                        <span :class="(toDoAction.done) ? 'my-line-through' : ''" @click="changeBooleanValue(index)">{{toDoAction.text.charAt(0).toUpperCase() + toDoAction.text.substr(1)}}</span>
-                        <i class="my-icon" @click="removeElementOfTheList(toDoActions,index)">X</i>
+
+                <!-- ? CONTENUTO PRINCIPALE DEL TODO -->
+
+                <!-- * Lista toDo -->
+                <ul v-if="toDoActions.length > 0" class="px-0 py-3">
+                    <li v-for="(toDoAction,index) in toDoActions" class="d-flex justify-content-between p-2 rounded-1">
+                        <div class="my-todo-info">
+                            <span class="pe-3" :class="(toDoAction.done) ? 'my-line-through' : ''" @click="changeBooleanValue(index)">{{toDoAction.text.charAt(0).toUpperCase() + toDoAction.text.substr(1)}}</span>
+                            <code v-if="!toDoAction.done">{{actualDate}}</code>
+                        </div>
+                        <i class="fa-solid fa-trash my-icon align-self-center" @click="removeElementOfTheList(toDoActions,index)"></i>
                     </li>
                 </ul>
 
+                <!-- * Paragrafo da mostrare nel caso in cui la lista toDo è vuota -->
                 <p v-else>Non ci sono cose da fare per oggi</p>
             </main>
         </div>

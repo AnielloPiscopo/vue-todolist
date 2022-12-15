@@ -1,6 +1,27 @@
 /* *-------------------------------------------------------------------
 STILE GENERICO */
 
+/* * ROOT */
+:root{
+    --primary-color:black;
+    --primary-bg-color:white;
+    --wrong-input-value:red;
+    --valid-input-value:green;
+    --todo-bg-color:#f0f0f0;
+    --todo-hover-bg-color:#d3d3d3;
+    --input-bg-color:#e8e8e8;
+}
+
+
+
+/* * TAG HTML */
+body{
+    color: var(--primary-color);
+    background-color: var(--primary-bg-color);
+}
+
+
+
 /* * CLASSI */
 .my-icon{
     cursor: pointer;
@@ -10,9 +31,85 @@ STILE GENERICO */
     text-decoration: line-through;
 }
 
+.my-input:focus,
+.my-btn:focus{
+    box-shadow: none;
+    outline: none;
+}
+
+.my-btn{
+    vertical-align: initial;
+}
+
 
 
 
 
 /* *-------------------------------------------------------------------
 STILE SPECIFICO */
+
+main form .my-input{
+    width: 100%;
+    background-color: var(--input-bg-color);
+}
+
+main form .my-input.error:hover{
+    border-color:var(--wrong-input-value);
+}
+
+main form .my-input.correct:hover{
+    border-color:var(--valid-input-value);
+}
+
+main form .my-btn{
+    width: 100%;
+}
+
+main ul li{
+    background-color: var(--todo-bg-color);
+    border-bottom: 3px solid var(--primary-bg-color);
+}
+
+main ul li:last-of-type{
+    border-bottom: none;
+}
+
+main ul li:hover{
+    background-color: var(--todo-hover-bg-color);
+}
+
+main ul li span{
+    cursor: pointer;
+}
+
+main ul li:hover span{
+    font-style: italic;
+}
+
+main ul li span:hover{
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+/* ?-------------------------------------------------------------------
+RESPONSIVENESS */
+
+@media screen and (min-width:576px){
+    /* * STILE SPECIFICO */
+
+    main form .my-input{
+        width: 75%;
+    }
+
+    main form .my-btn{
+        width: calc(25% - 1rem);
+    }
+}

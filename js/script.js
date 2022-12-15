@@ -60,8 +60,10 @@ createApp({
             ],
 
             newToDoAction : '',
+            
+            inputErrorValue: false,
 
-            isTheClassPresent : false, 
+            actualDate : '',
         }
     },
 
@@ -83,14 +85,27 @@ createApp({
     
                 list.push(newElement);
             }
+
+            this.refreshInputField();
+            this.updateDate();
+        },
+
+        refreshInputField(){
+            this.newToDoAction = '';
         },
 
         changeBooleanValue(index){
             this.toDoActions[index].done = !this.toDoActions[index].done;
         },
 
-        toggleClass(element,elementClass){
-            console.log(element)
+        changeClass(element){
+            this.inputErrorValue = (element === '' || element.length<2) ? true:false;
+        },
+
+        updateDate(){
+            const date = new Date();
+            const dateItalianFormat = date.toLocaleDateString('ita');
+            this.actualDate = dateItalianFormat;
         }
     },
 }).mount('#app')
